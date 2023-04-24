@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MenuController!{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper {
+            margin: 1em auto;
+            max-width: 800px;
+            width: 95%;
+            font: 18px/1.5 sans-serif;
+        }
+
+        .example-wrapper code {
+            background: #F5F5F5;
+            padding: 2px 6px;
+        }
+    </style>
+    <div class="row ">
+
+        {% for product in products %}
+            <div class="col-6">
+                <div class="cards">
+                    <div class="card mb-3" style="max-width: 600px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img class="w-100 img-thumbnail" src="{{ asset('images/menu_images/' ~ product.id ~'.jpg') }}"
+                                     alt="image{{ product.id }}">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ product.name }}</h5>
+                                    <p class="card-text">
+                                        {{ product.description }}
+                                    </p>
+                                    <span class="h5 mt-auto">{{ product.price }} zł</span>
+                                    <a href="{{ path('menu_detail', {id: product.id}) }}" class="stretched-link"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+{% endblock %}

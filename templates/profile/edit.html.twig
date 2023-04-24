@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Profile{% endblock %}
+
+{% block body %}
+    <div class="card bg-light text-dark p-lg-5 p-md-3 p-1 my-lg-5 my-md-3 my-0">
+        <div class="card-body">
+            <div class="d-flex justify-content-center flex-column">
+                <div class="md-3"><h1 class="d-flex justify-content-center">Edit Profile</h1></div>
+                {{ form_start(editForm) }}
+                {{ form_row(editForm.username) }}
+                {{ form_row(editForm.fname) }}
+                {{ form_row(editForm.lname) }}
+                {{ form_row(editForm.email) }}
+                {{ form_row(editForm.phone_number) }}
+                {{ form_row(editForm.address) }}
+                {{ form_row(editForm.plainPassword) }}
+                {{ form_errors(editForm) }}
+                <div class="d-flex justify-content-around">
+                    <button type="submit" class="btn btn-lg mb-3 btn-warning">
+                        Edit Profile
+                    </button>
+                    <a href="{{ path('profile_main', {id: app.user.id }) }}" class="btn btn-lg mb-3 btn-dark ">Back</a>
+                    <a href="{{ path('profile_delete', {id: app.user.id }) }}" class="btn btn-lg mb-3 btn-danger ">Delete
+                        Profile</a>
+                </div>
+                {{ form_end(editForm) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
